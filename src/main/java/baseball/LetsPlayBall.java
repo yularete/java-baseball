@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class LetsPlayBall {
 
-    public List<Integer> userNumber() {
+    public List<Integer> getSetGo() {
         System.out.println("숫자를 입력해주세요. : ");
         Scanner sc = new Scanner(System.in);
         List<Integer> userNum = new ArrayList<>();
@@ -20,6 +20,14 @@ public class LetsPlayBall {
         if(input.length() != 3) throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         return userNum;
     }
+    public boolean restart(){
+        System.out.println("축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 종료 : 2");
+        Scanner sc = new Scanner(System.in);
+        char answer = sc.next().charAt(0);
+        return answer == '1';
+    }
+
+
     private static List<Integer> createRandomNumber(){
         List<Integer> comNum = new ArrayList<>();
         while (comNum.size() < 3) {
@@ -85,7 +93,4 @@ public class LetsPlayBall {
         }
         return ball + "볼 " + strike + "스트라이크";
     }
-
-
-
 }
