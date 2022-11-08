@@ -9,19 +9,6 @@ import java.util.Scanner;
 
 public class LetsPlayBall {
 
-    public static void start(LetsPlayBall letsPlayBall) {
-        System.out.println("숫자 야구 게임을 시작합니다.");
-        int ball = 0;
-        int strike = 0;
-        LinkedList<Integer> answer = LetsPlayBall.setComNum();
-        while (strike < MAX_NUMBER) {
-            LinkedList<Integer> userNumber = LetsPlayBall.userNum();
-            strike = LetsPlayBall.strike(comNum, userNum);
-            ball = LetsPlayBall.ball(comNum, userNum);
-            LetsPlayBall.output(ball, strikeCount);
-        }
-    }
-
     public List<Integer> userNumber() {
         System.out.println("숫자를 입력해주세요. : ");
         Scanner sc = new Scanner(System.in);
@@ -83,4 +70,22 @@ public class LetsPlayBall {
         }
         return result;
     }
+
+    public String gameResult(List<Integer> userNum, List<Integer> comNum) {
+        int total = compare(comNum, userNum);
+        int strike = strikeCount(comNum, userNum);
+        int ball = ballCount(comNum, userNum);
+
+        if (total == 0) {
+            return "낫싱";
+        } else if (strike == 0) {
+            return ball + "볼";
+        } else if (ball == 0) {
+            return strike + "스트라이크";
+        }
+        return ball + "볼 " + strike + "스트라이크";
+    }
+
+
+
 }
