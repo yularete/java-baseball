@@ -3,13 +3,26 @@ package baseball;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class LetsPlayBall {
 
-    public List<Integer> userNumber() {
+    public static void start(LetsPlayBall letsPlayBall) {
         System.out.println("숫자 야구 게임을 시작합니다.");
+        int ball = 0;
+        int strike = 0;
+        LinkedList<Integer> answer = LetsPlayBall.setComNum();
+        while (strike < MAX_NUMBER) {
+            LinkedList<Integer> userNumber = LetsPlayBall.userNum();
+            strike = LetsPlayBall.strike(comNum, userNum);
+            ball = LetsPlayBall.ball(comNum, userNum);
+            LetsPlayBall.output(ball, strikeCount);
+        }
+    }
+
+    public List<Integer> userNumber() {
         System.out.println("숫자를 입력해주세요. : ");
         Scanner sc = new Scanner(System.in);
         List<Integer> userNum = new ArrayList<>();
@@ -61,7 +74,13 @@ public class LetsPlayBall {
         return Nothing;
     }
 
-
-
-
+    public int compare(List<Integer> userNum, List<Integer> comNum){
+        int result = 0;
+        for(int i = 0; i < userNum.size(); i++){
+            if(comNum.contains(userNum.get(i))){
+                result += 1;
+            }
+        }
+        return result;
+    }
 }
