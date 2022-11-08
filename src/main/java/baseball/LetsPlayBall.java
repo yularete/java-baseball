@@ -31,4 +31,37 @@ public class LetsPlayBall {
         return comNum;
     }
 
+    public static int strikeCount(List<Integer> userNum, List<Integer> comNum){
+        int strike = 0;
+        for(int i=0; i<userNum.size(); i++){
+            if(userNum.get(i).equals(comNum.get(i))) {
+                strike++;
+            }
+        }
+        return strike;
+    }
+
+    public static int ballCount(List<Integer> userNum, List<Integer> comNum){
+        int ball = 0;
+        for(int i=0; i<userNum.size(); i++){
+            if(!userNum.get(i).equals(comNum.get(i)) && comNum.contains(userNum.get(i)))   {
+                ball++;
+            }
+        }
+        return ball;
+    }
+
+    public static Boolean nothingCount(List<Integer> userNum, List<Integer> comNum){
+        boolean Nothing = true;
+        for (Integer integer : userNum)
+            if (comNum.contains(integer)) {
+                Nothing = false;
+                break;
+            }
+        return Nothing;
+    }
+
+
+
+
 }
