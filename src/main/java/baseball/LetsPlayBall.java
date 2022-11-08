@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class LetsPlayBall {
 
-    public List<Integer> getSetGo() {
+    public static List<Integer> getSetGo() {
         System.out.println("숫자를 입력해주세요. : ");
         Scanner sc = new Scanner(System.in);
         List<Integer> userNum = new ArrayList<>();
@@ -20,7 +20,7 @@ public class LetsPlayBall {
         if(input.length() != 3) throw new IllegalArgumentException("입력값이 잘못되었습니다.");
         return userNum;
     }
-    public boolean restart(){
+    public static boolean restart(){
         System.out.println("축하합니다! 경기를 다시 시작하겠습니까? 다시 시작 : 1, 종료 : 2");
         Scanner sc = new Scanner(System.in);
         char answer = sc.next().charAt(0);
@@ -28,7 +28,7 @@ public class LetsPlayBall {
     }
 
 
-    private static List<Integer> createRandomNumber(){
+    static List<Integer> createRandomNumber(){
         List<Integer> comNum = new ArrayList<>();
         while (comNum.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -69,17 +69,17 @@ public class LetsPlayBall {
         return Nothing;
     }
 
-    public int compare(List<Integer> userNum, List<Integer> comNum){
+    public static int compare(List<Integer> userNum, List<Integer> comNum){
         int result = 0;
-        for(int i = 0; i < userNum.size(); i++){
-            if(comNum.contains(userNum.get(i))){
+        for (Integer integer : userNum) {
+            if (comNum.contains(integer)) {
                 result += 1;
             }
         }
         return result;
     }
 
-    public String gameResult(List<Integer> userNum, List<Integer> comNum) {
+    public static String gameResult(List<Integer> userNum, List<Integer> comNum) {
         int total = compare(comNum, userNum);
         int strike = strikeCount(comNum, userNum);
         int ball = ballCount(comNum, userNum);
